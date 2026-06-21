@@ -2,7 +2,7 @@ export const SITE_TITLE = 'AI副業キャンパス';
 export const SITE_DESCRIPTION =
   '会社員・若手エンジニア向けに、AI副業、アフィリエイト、SNS発信、GAS/Codex自動化を学ぶ実践メディアです。';
 
-export const SITE_URL = 'https://y-nakanen.github.io/ai-affiliate/';
+export const SITE_URL = 'https://aiprogramafi.jp/';
 export const CONTACT_FORM_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLSd0GMJPGzD3Ydxk5mFOE8lJjDKTYlB0ZNgTc0-UAPXlVX4O9Q/viewform?usp=dialog';
 export const AFFILIATE_SELECTION_SHEET_URL =

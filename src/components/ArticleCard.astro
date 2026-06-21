@@ -22,7 +22,16 @@ const slug = articleSlug(article);
   </div>
   <h3><a href={withBase(`/articles/${slug}/`)}>{article.data.title}</a></h3>
   <p>{article.data.description}</p>
+  {
+    article.data.takeaways[0] && (
+      <p class="article-card-point">
+        <span>要点</span>
+        {article.data.takeaways[0]}
+      </p>
+    )
+  }
   <div class="chip-list" aria-label="記事タグ">
+    {article.data.difficulty && <span>{article.data.difficulty}</span>}
     {article.data.tags.slice(0, 3).map((tag) => <span>{tag}</span>)}
   </div>
   <a class="card-read-link" href={withBase(`/articles/${slug}/`)}>この記事で学ぶ</a>

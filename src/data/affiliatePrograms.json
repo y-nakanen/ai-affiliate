@@ -11,10 +11,10 @@
   {
     "id": "rakuten-affiliate",
     "name": "楽天アフィリエイト",
-    "status": "利用予定",
+    "status": "提携済み",
     "homepage": "https://affiliate.rakuten.co.jp/",
-    "disclosureLabel": "楽天アフィリエイト利用予定",
-    "requiredDisclosure": "当サイトは楽天アフィリエイトを利用する場合があります。",
+    "disclosureLabel": "楽天アフィリエイト提携済み",
+    "requiredDisclosure": "当サイトは楽天アフィリエイトの広告リンクを掲載しています。",
     "notes": "商品リンク掲載時は広告であることが分かる位置に表記する。"
   },
   {

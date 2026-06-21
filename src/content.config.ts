@@ -10,6 +10,9 @@ const articles = defineCollection({
     updatedDate: z.coerce.date().optional(),
     categoryId: z.string(),
     tags: z.array(z.string()).default([]),
+    takeaways: z.array(z.string()).default([]),
+    audience: z.string().optional(),
+    difficulty: z.string().optional(),
     affiliateDisclosure: z.boolean().default(true),
     relatedSlugs: z.array(z.string()).default([]),
     draft: z.boolean().default(false)

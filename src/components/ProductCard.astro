@@ -10,6 +10,10 @@ interface Product {
   summary: string;
   recommendedFor?: string;
   caution?: string;
+  imageUrl?: string;
+  priceText?: string;
+  personalNote?: string;
+  sourceLabel?: string;
   officialUrl?: string;
   affiliateUrl?: string;
   programId?: string;
@@ -24,8 +28,12 @@ interface Props {
 
 const { product } = Astro.props;
 const link = product.affiliateUrl || product.officialUrl || '';
-const label = product.affiliateUrl ? '詳細を見る' : '公式サイトを見る';
-const rel = product.affiliateUrl ? 'noopener noreferrer nofollow sponsored' : 'noopener noreferrer';
+const label = product.affiliateUrl && product.programId === 'rakuten-affiliate'
+  ? '楽天で見る'
+  : product.affiliateUrl
+    ? '詳細を見る'
+    : '公式サイトを見る';
+const rel = product.affiliateUrl ? 'nofollow sponsored noopener noreferrer' : 'noopener noreferrer';
 const pendingLabel = product.isAffiliate ? '紹介準備中' : '近日追加予定';
 const primaryCategory = categories.find((category) => category.id === product.primaryCategoryId);
 const categoryNames = (product.categoryIds ?? [])
@@ -47,8 +55,20 @@ const adLabel = product.affiliateUrl
     <p class="card-kicker">{primaryCategory?.name ?? product.experienceStatus ?? '紹介候補'}</p>
     <span class:list={['ad-label', { 'is-ad': product.isAffiliate }]}>{adLabel}</span>
   </div>
+  {
+    product.imageUrl && (
+      link ? (
+        <a class="product-image-link" href={link} target="_blank" rel={rel}>
+          <img class="product-image" src={product.imageUrl} alt={`${product.name}の商品画像`} loading="lazy" />
+        </a>
+      ) : (
+        <img class="product-image" src={product.imageUrl} alt={`${product.name}の商品画像`} loading="lazy" />
+      )
+    )
+  }
   <h3>{product.name}</h3>
   <p>{product.summary}</p>
+  {product.personalNote && <p class="product-note">{product.personalNote}</p>}
   <dl class="product-details">
     <div>
       <dt>対象</dt>
@@ -63,10 +83,12 @@ const adLabel = product.affiliateUrl
     <span>{product.experienceStatus ?? '紹介候補'}</span>
     {categoryNames.map((name) => <span>{name}</span>)}
     {program && <span>{program.disclosureLabel}</span>}
+    {product.sourceLabel && <span>{product.sourceLabel}</span>}
   </div>
+  {product.priceText && <p class="product-price">{product.priceText}</p>}
   {
     link ? (
-      <a class="text-link" href={link} target="_blank" rel={rel}>
+      <a class:list={['button', product.affiliateUrl ? 'primary' : 'secondary', 'product-button']} href={link} target="_blank" rel={rel}>
         {label}
       </a>
     ) : (

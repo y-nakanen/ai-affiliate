@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import categories from '../data/categories.json';
 import BaseLayout from './BaseLayout.astro';
 
 interface Props {
@@ -9,20 +10,78 @@ interface Props {
 
 const { article } = Astro.props;
 const published = article.data.pubDate.toLocaleDateString('ja-JP');
+const category = categories.find((item) => item.id === article.data.categoryId);
+const body = (article as CollectionEntry<'articles'> & { body?: string }).body ?? '';
+const slugCounts = new Map<string, number>();
+const cleanHeading = (value: string) =>
+  value
+    .replace(/<[^>]+>/g, '')
+    .replace(/[`*_~[\]()]/g, '')
+    .trim();
+const headingId = (value: string) => {
+  const base =
+    cleanHeading(value)
+      .toLowerCase()
+      .replace(/[^\p{Letter}\p{Number}\s-]/gu, '')
+      .trim()
+      .replace(/\s+/g, '-') || 'section';
+  const count = slugCounts.get(base) ?? 0;
+  slugCounts.set(base, count + 1);
+  return count === 0 ? base : `${base}-${count}`;
+};
+const headings = Array.from(body.matchAll(/^##\s+(.+)$/gm)).map((match) => {
+  const text = cleanHeading(match[1]);
+  return { text, id: headingId(text) };
+});
 ---
 
 <BaseLayout title={article.data.title} description={article.data.description} ogType="article">
   <article class="article-shell">
     <header class="article-header">
+      <div class="article-topline">
+        <span class="article-category">{category?.name ?? '記事'}</span>
+        {article.data.difficulty && <span>{article.data.difficulty}</span>}
+      </div>
       <p class="eyebrow">Article</p>
       <h1>{article.data.title}</h1>
       <p class="article-lead">{article.data.description}</p>
       <div class="article-meta">
         <time datetime={article.data.pubDate.toISOString()}>{published}</time>
-        <span>{article.data.tags.join(' / ')}</span>
+        {article.data.audience && <span>{article.data.audience}</span>}
+      </div>
+      <div class="article-tag-list" aria-label="記事タグ">
+        {article.data.tags.map((tag) => <span>{tag}</span>)}
       </div>
     </header>
     {article.data.affiliateDisclosure && <AffiliateDisclosure type="article" />}
+
+    {(article.data.takeaways.length > 0 || headings.length > 0) && (
+      <div class="article-study-grid">
+        {article.data.takeaways.length > 0 && (
+          <section class="article-brief" aria-labelledby="article-brief-title">
+            <p class="eyebrow">Quick View</p>
+            <h2 id="article-brief-title">この記事でわかること</h2>
+            <ul>
+              {article.data.takeaways.map((item) => <li>{item}</li>)}
+            </ul>
+          </section>
+        )}
+        {headings.length > 0 && (
+          <nav class="article-toc" aria-label="記事の目次">
+            <p class="eyebrow">Contents</p>
+            <h2>目次</h2>
+            <ol>
+              {headings.map((heading) => (
+                <li>
+                  <a href={`#${heading.id}`}>{heading.text}</a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )}
+      </div>
+    )}
+
     <div class="article-content">
       <slot />
     </div>

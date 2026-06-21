@@ -1,5 +1,6 @@
 ---
 import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import CTABox from '../components/CTABox.astro';
 import ProductCard from '../components/ProductCard.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getProductsByGroup } from '../utils/products';
@@ -17,6 +18,13 @@ const products = getProductsByGroup('gadgets');
   <section class="section narrow">
     <AffiliateDisclosure compact type="product" />
   </section>
+
+  <CTABox
+    title="キーボードの選び方を記事で読む"
+    text="入門モデル、ステップアップ候補、現在使っている上位モデルの3つを、作業量に合わせて整理しました。"
+    href="/articles/keyboard-workspace/"
+    label="選び方を記事で読む"
+  />
 
   <section class="section">
     <div class="card-grid">
