@@ -4,11 +4,12 @@ export function withBase(path: string) {
   }
 
   const base = import.meta.env.BASE_URL || '/';
+  const normalizedBase = base.endsWith('/') ? base : `${base}/`;
   const cleanPath = path.replace(/^\/+/, '');
 
   if (!cleanPath) {
-    return base;
+    return normalizedBase;
   }
 
-  return `${base}${cleanPath}`;
+  return `${normalizedBase}${cleanPath}`;
 }

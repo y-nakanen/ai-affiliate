@@ -1,20 +1,31 @@
 ---
-import { LINE_URL } from '../consts';
+import { LINE_QR_IMAGE_URL, LINE_URL } from '../consts';
 ---
 
 <section class="line-cta">
   <div>
     <p class="eyebrow">LINE</p>
-    <h2>LINEでの案内は公開準備中です</h2>
+    <h2>LINEで更新情報を受け取れます</h2>
     <p>
-      無料テンプレ配布や更新通知は、受け取りやすい形に整えてから案内します。
+      無料テンプレの追加、記事更新、AI副業導線づくりのメモを受け取りやすい形で案内します。
     </p>
   </div>
-  {
-    LINE_URL ? (
-      <a class="button primary" href={LINE_URL} target="_blank" rel="noopener noreferrer">LINEで受け取る</a>
-    ) : (
-      <span class="status-pill">近日公開予定</span>
-    )
-  }
+  <div class="line-actions">
+    {
+      LINE_URL ? (
+        <a class="button primary" href={LINE_URL} target="_blank" rel="noopener noreferrer">LINEで友だち追加する</a>
+      ) : (
+        <span class="status-pill">近日公開予定</span>
+      )
+    }
+    {
+      LINE_QR_IMAGE_URL && LINE_URL ? (
+        <a class="line-qr-link" href={LINE_URL} target="_blank" rel="noopener noreferrer" aria-label="LINE公式アカウントを友だち追加する">
+          <img class="line-qr" src={LINE_QR_IMAGE_URL} alt="AI副業キャンパス LINE公式アカウントのQRコード" loading="lazy" />
+        </a>
+      ) : (
+        LINE_QR_IMAGE_URL && <img class="line-qr" src={LINE_QR_IMAGE_URL} alt="AI副業キャンパス LINE公式アカウントのQRコード" loading="lazy" />
+      )
+    }
+  </div>
 </section>
