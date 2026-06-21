@@ -1,0 +1,85 @@
+---
+import { AFFILIATE_SELECTION_SHEET_URL } from '../consts';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../utils/paths';
+---
+
+<BaseLayout title="無料テンプレート一覧" description="AIアフィリエイト案件選定シートを中心に、アフィリエイト運用に使う無料テンプレートと今後の追加予定をまとめています。">
+  <section class="page-hero">
+    <p class="eyebrow">Templates</p>
+    <h1>無料テンプレート一覧</h1>
+    <p>
+      まずはAIアフィリエイト案件選定シートを公開しています。紹介候補を整理してから、記事、SNS、相談導線へ広げます。
+    </p>
+  </section>
+
+  <section class="section narrow">
+    <div class="notice-panel template-cta">
+      <p class="eyebrow">Available Now</p>
+      <h2>AIアフィリエイト案件選定シート</h2>
+      <p>
+        紹介したい商品・サービス、ASP、広告表記、記事テーマ、優先順位を一枚で整理するためのGoogleスプレッドシートです。最初に案件を広げすぎず、記事化しやすい候補から選ぶために使います。
+      </p>
+      <ul class="template-feature-list">
+        <li>紹介候補、ASP、公式URL、広告URLの整理</li>
+        <li>広告表記や利用状況を確認するためのチェック欄</li>
+        <li>記事テーマ、SNS展開、優先度のメモ欄</li>
+      </ul>
+      <div class="hero-actions">
+        <a class="button primary" href={AFFILIATE_SELECTION_SHEET_URL} target="_blank" rel="noopener noreferrer">
+          コピーして使う
+        </a>
+        <a class="button secondary" href={withBase('/articles/ai-affiliate-start/')}>使い方の考え方を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">Coming Next</p>
+      <h2>今後追加予定のテンプレート</h2>
+    </div>
+    <div class="template-list">
+      <article>
+        <h2>ASP案件管理シート</h2>
+        <p>審査状況、記事URL、広告表記、差し替え履歴まで管理する運用向けシート。</p>
+      </article>
+      <article>
+        <h2>記事テンプレ</h2>
+        <p>読者の悩み、結論、手順、注意点、次の導線を外さない記事構成テンプレ。</p>
+      </article>
+      <article>
+        <h2>X投稿テンプレ</h2>
+        <p>記事公開、学び、比較、注意喚起、テンプレ配布につなげる投稿案。</p>
+      </article>
+      <article>
+        <h2>TikTok台本テンプレ</h2>
+        <p>冒頭フック、本文、注意点、次の行動を短尺動画向けに整理する台本。</p>
+      </article>
+      <article>
+        <h2>LINEステップテンプレ</h2>
+        <p>無料配布後のフォロー、記事回遊、相談導線を整える配信設計。</p>
+      </article>
+      <article>
+        <h2>GitHub Pagesサイト雛形</h2>
+        <p>静的サイトを小さく公開し、記事と商品データをGitで管理する雛形。</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section narrow">
+    <div class="notice-panel template-cta">
+      <p class="eyebrow">Next Step</p>
+      <h2>まずは案件選定シートから始める</h2>
+      <p>
+        いきなり記事を書き始める前に、紹介候補と読者の悩みが合っているかを整理しておくと、後から導線を組みやすくなります。
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href={AFFILIATE_SELECTION_SHEET_URL} target="_blank" rel="noopener noreferrer">
+          シートをコピーする
+        </a>
+        <a class="button secondary" href={withBase('/start/')}>全体像を見る</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

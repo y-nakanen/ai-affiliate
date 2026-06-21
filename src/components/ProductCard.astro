@@ -1,0 +1,76 @@
+---
+import affiliatePrograms from '../data/affiliatePrograms.json';
+import categories from '../data/categories.json';
+
+interface Product {
+  id: string;
+  name: string;
+  primaryCategoryId?: string;
+  categoryIds?: string[];
+  summary: string;
+  recommendedFor?: string;
+  caution?: string;
+  officialUrl?: string;
+  affiliateUrl?: string;
+  programId?: string;
+  isAffiliate?: boolean;
+  disclosureRequired?: boolean;
+  experienceStatus?: string;
+}
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const link = product.affiliateUrl || product.officialUrl || '';
+const label = product.affiliateUrl ? '詳細を見る' : '公式サイトを見る';
+const rel = product.affiliateUrl ? 'noopener noreferrer nofollow sponsored' : 'noopener noreferrer';
+const pendingLabel = product.isAffiliate ? '紹介準備中' : '近日追加予定';
+const primaryCategory = categories.find((category) => category.id === product.primaryCategoryId);
+const categoryNames = (product.categoryIds ?? [])
+  .map((id) => categories.find((category) => category.id === id)?.name)
+  .filter(Boolean)
+  .slice(0, 2);
+const program = affiliatePrograms.find((item) => item.id === product.programId);
+const adLabel = product.affiliateUrl
+  ? '広告リンク'
+  : product.officialUrl
+    ? '公式リンク'
+    : product.isAffiliate
+      ? 'PR掲載予定'
+      : '紹介候補';
+---
+
+<article class="content-card product-card">
+  <div class="product-card-head">
+    <p class="card-kicker">{primaryCategory?.name ?? product.experienceStatus ?? '紹介候補'}</p>
+    <span class:list={['ad-label', { 'is-ad': product.isAffiliate }]}>{adLabel}</span>
+  </div>
+  <h3>{product.name}</h3>
+  <p>{product.summary}</p>
+  <dl class="product-details">
+    <div>
+      <dt>対象</dt>
+      <dd>{product.recommendedFor ?? '紹介対象を整理中です。'}</dd>
+    </div>
+    <div>
+      <dt>注意点</dt>
+      <dd>{product.caution ?? '公式情報を確認してください。'}</dd>
+    </div>
+  </dl>
+  <div class="chip-list" aria-label="カテゴリと広告状態">
+    <span>{product.experienceStatus ?? '紹介候補'}</span>
+    {categoryNames.map((name) => <span>{name}</span>)}
+    {program && <span>{program.disclosureLabel}</span>}
+  </div>
+  {
+    link ? (
+      <a class="text-link" href={link} target="_blank" rel={rel}>
+        {label}
+      </a>
+    ) : (
+      <span class="availability-note">{pendingLabel}</span>
+    )
+  }
+</article>

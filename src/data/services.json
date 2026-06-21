@@ -1,0 +1,47 @@
+[
+  {
+    "id": "ai-affiliate-funnel",
+    "name": "AIアフィリエイト導線設計",
+    "target": "AI副業やアフィリエイトを始めたい個人・小規模事業者",
+    "scope": "読者像、記事テーマ、商品候補、無料テンプレ、LINE導線の整理",
+    "deliverable": "導線マップ、優先タスク、最初の3記事案",
+    "status": "近日公開予定",
+    "priority": 10
+  },
+  {
+    "id": "github-pages-site",
+    "name": "GitHub Pagesサイト構築",
+    "target": "低コストで母艦サイトやLPを公開したい人",
+    "scope": "Astro構成、ページ設計、データ管理、GitHub Pages公開の初期構築",
+    "deliverable": "静的サイト雛形、README、運用手順",
+    "status": "近日公開予定",
+    "priority": 20
+  },
+  {
+    "id": "gas-automation",
+    "name": "GAS業務効率化",
+    "target": "スプレッドシート中心の定型作業を減らしたい事業者",
+    "scope": "案件管理、通知、定型メール、投稿管理などの小さな自動化",
+    "deliverable": "GASスクリプト、管理シート、操作メモ",
+    "status": "近日公開予定",
+    "priority": 30
+  },
+  {
+    "id": "line-funnel",
+    "name": "LINE導線設計",
+    "target": "SNSやサイトからLINE登録へつなげたい人",
+    "scope": "登録特典、ステップ配信、相談導線、記事回遊の設計",
+    "deliverable": "配信設計案、初回メッセージ案、導線チェックリスト",
+    "status": "近日公開予定",
+    "priority": 40
+  },
+  {
+    "id": "codex-consulting",
+    "name": "Codex活用相談",
+    "target": "Codexでサイト運用や資料作成を効率化したい人",
+    "scope": "依頼文の作り方、ファイル構成、更新フロー、検証手順の整理",
+    "deliverable": "運用メモ、改善プロンプト、次回依頼テンプレ",
+    "status": "近日公開予定",
+    "priority": 50
+  }
+]

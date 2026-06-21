@@ -1,0 +1,44 @@
+[
+  {
+    "id": "ai-sidejob",
+    "name": "AI副業",
+    "description": "ChatGPTやCodexを使い、副業や発信を小さく始めるための考え方。",
+    "href": "/categories/ai-sidejob/"
+  },
+  {
+    "id": "skills",
+    "name": "スキルアップ・資格",
+    "description": "会社員が収入の選択肢を増やすための学習テーマ、資格、教材。",
+    "href": "/categories/skills/"
+  },
+  {
+    "id": "engineer-career",
+    "name": "エンジニア副業・転職",
+    "description": "技術スキルを案件、相談、転職、副業につなげる導線づくり。",
+    "href": "/categories/engineer-career/"
+  },
+  {
+    "id": "workspace",
+    "name": "作業環境・ガジェット",
+    "description": "副業作業を続けやすくするデスク環境、ガジェット、周辺機器。",
+    "href": "/categories/workspace/"
+  },
+  {
+    "id": "automation",
+    "name": "Codex・GAS自動化",
+    "description": "Codex、GitHub Pages、GASで作業を仕組み化する実践メモ。",
+    "href": "/categories/automation/"
+  },
+  {
+    "id": "affiliate",
+    "name": "アフィリエイト運用",
+    "description": "広告表記、ASP管理、記事導線、SNSからの回遊を整える運用術。",
+    "href": "/categories/affiliate/"
+  },
+  {
+    "id": "ebooks-audio",
+    "name": "電子書籍・音声学習",
+    "description": "通勤やすきま時間に学べる電子書籍、音声学習、読書環境。",
+    "href": "/categories/ebooks-audio/"
+  }
+]

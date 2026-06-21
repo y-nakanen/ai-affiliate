@@ -1,0 +1,28 @@
+---
+import { FOOTER_LINKS, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { withBase } from '../utils/paths';
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <p class="footer-title">{SITE_TITLE}</p>
+      <p class="footer-description">{SITE_DESCRIPTION}</p>
+    </div>
+    <div class="footer-nav-groups">
+      <nav class="footer-links" aria-label="サイト情報">
+        <span>サイト情報</span>
+        {FOOTER_LINKS.filter((item) => item.href === '/profile/' || item.href === '/contact/').map((item) => (
+          <a href={withBase(item.href)}>{item.label}</a>
+        ))}
+      </nav>
+      <nav class="footer-links" aria-label="ポリシー">
+        <span>ポリシー</span>
+        {FOOTER_LINKS.filter((item) => item.href === '/ad-policy/' || item.href === '/privacy-policy/').map((item) => (
+          <a href={withBase(item.href)}>{item.label}</a>
+        ))}
+      </nav>
+    </div>
+  </div>
+  <p class="copyright">© {new Date().getFullYear()} {SITE_TITLE}</p>
+</footer>

@@ -1,0 +1,26 @@
+---
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import ProductCard from '../components/ProductCard.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getProductsByGroup } from '../utils/products';
+
+const products = getProductsByGroup('skills');
+---
+
+<BaseLayout title="資格・学習・電子書籍紹介" description="会社員や若手エンジニアがAI副業や案件獲得の土台を作るための資格、学習、電子書籍、音声学習候補です。">
+  <section class="page-hero">
+    <p class="eyebrow">Skills</p>
+    <h1>資格・学習・電子書籍</h1>
+    <p>AI副業やエンジニア副業の土台になる学習テーマを、過度に広げすぎず整理します。</p>
+  </section>
+
+  <section class="section narrow">
+    <AffiliateDisclosure compact type="product" />
+  </section>
+
+  <section class="section">
+    <div class="card-grid">
+      {products.map((product) => <ProductCard product={product} />)}
+    </div>
+  </section>
+</BaseLayout>

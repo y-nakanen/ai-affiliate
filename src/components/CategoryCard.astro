@@ -1,0 +1,23 @@
+---
+import { withBase } from '../utils/paths';
+
+interface Category {
+  id: string;
+  name: string;
+  description: string;
+  href: string;
+}
+
+interface Props {
+  category: Category;
+}
+
+const { category } = Astro.props;
+---
+
+<article class="content-card category-card">
+  <p class="card-kicker">Campus Topic</p>
+  <h3><a href={withBase(category.href)}>{category.name}</a></h3>
+  <p>{category.description}</p>
+  <a class="card-read-link" href={withBase(category.href)}>このテーマを見る</a>
+</article>

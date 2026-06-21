@@ -1,0 +1,31 @@
+---
+import { LINE_URL } from '../consts';
+import { withBase } from '../utils/paths';
+
+const heroImage = withBase('/images/ogp/hero-ai-sidejob-campus.png');
+---
+
+<section class="hero-section" style={`--hero-image: url("${heroImage}")`}>
+  <div class="hero-copy">
+    <p class="eyebrow">AI Side Job Campus</p>
+    <h1>AI副業を、学んで実践するキャンパス。</h1>
+    <p>
+      ChatGPT、Codex、SNS、GAS自動化を使い、会社員でも小さく始めやすいAI副業の流れを学べます。
+    </p>
+    <div class="hero-actions">
+      <a class="button primary" href={withBase('/start/')}>はじめて学ぶ</a>
+      <a class="button secondary" href={withBase('/templates/')}>無料テンプレを見る</a>
+      <a class="button secondary" href={withBase('/articles/')}>記事で学ぶ</a>
+      <a class="button secondary" href={withBase('/contact/')}>相談する</a>
+    </div>
+    <div class="hero-highlights" aria-label="このサイトで学べること">
+      <span>AI副業</span>
+      <span>SNS導線</span>
+      <span>無料テンプレ</span>
+      <span>自動化</span>
+    </div>
+    <p class="hero-note">
+      {LINE_URL ? 'LINEで更新情報を受け取れます。' : '記事とテンプレを順次更新中。LINE導線は整い次第、控えめに案内します。'}
+    </p>
+  </div>
+</section>

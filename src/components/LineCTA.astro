@@ -1,0 +1,20 @@
+---
+import { LINE_URL } from '../consts';
+---
+
+<section class="line-cta">
+  <div>
+    <p class="eyebrow">LINE</p>
+    <h2>LINEでの案内は公開準備中です</h2>
+    <p>
+      無料テンプレ配布や更新通知は、受け取りやすい形に整えてから案内します。
+    </p>
+  </div>
+  {
+    LINE_URL ? (
+      <a class="button primary" href={LINE_URL} target="_blank" rel="noopener noreferrer">LINEで受け取る</a>
+    ) : (
+      <span class="status-pill">近日公開予定</span>
+    )
+  }
+</section>

@@ -1,0 +1,26 @@
+---
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import ProductCard from '../components/ProductCard.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getProductsByGroup } from '../utils/products';
+
+const products = getProductsByGroup('gadgets');
+---
+
+<BaseLayout title="作業環境・ガジェット紹介" description="記事作成、調査、コーディングを続けやすくするモニター、キーボード、マウスなどの紹介候補をまとめています。">
+  <section class="page-hero">
+    <p class="eyebrow">Workspace</p>
+    <h1>作業環境・ガジェット</h1>
+    <p>記事作成、調査、コーディングを続けやすくする作業環境を、無理のない範囲で整えます。</p>
+  </section>
+
+  <section class="section narrow">
+    <AffiliateDisclosure compact type="product" />
+  </section>
+
+  <section class="section">
+    <div class="card-grid">
+      {products.map((product) => <ProductCard product={product} />)}
+    </div>
+  </section>
+</BaseLayout>

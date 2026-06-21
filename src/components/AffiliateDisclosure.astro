@@ -1,0 +1,22 @@
+---
+interface Props {
+  compact?: boolean;
+  type?: 'article' | 'product' | 'site';
+}
+
+const { compact = false, type = 'site' } = Astro.props;
+
+const messages = {
+  article:
+    'この記事には広告・アフィリエイトリンクを含む場合があります。紹介内容は公式情報と実際の利用状況を分け、過度な断定表現を避けます。',
+  product:
+    'このページの商品・サービス紹介には広告・PRリンクを含む場合があります。リンク未設定の紹介候補は公開前の情報として控えめに表示し、利用実態と異なる表現はしません。',
+  site:
+    'このページには広告・アフィリエイトリンクを含む場合があります。掲載内容は公式情報を確認し、過度な断定や利用実態と異なる表現を避ける方針です。'
+};
+---
+
+<aside class:list={['affiliate-disclosure', { compact }]}>
+  <strong>広告・PRについて</strong>
+  <p>{messages[type]}</p>
+</aside>

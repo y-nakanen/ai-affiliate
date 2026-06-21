@@ -1,0 +1,16 @@
+---
+import { NAV_ITEMS, SITE_TITLE } from '../consts';
+import { withBase } from '../utils/paths';
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href={withBase('/')} aria-label={`${SITE_TITLE} ホーム`}>
+      <span class="brand-mark">AI</span>
+      <span class="brand-text">{SITE_TITLE}</span>
+    </a>
+    <nav class="site-nav" aria-label="メインナビゲーション">
+      {NAV_ITEMS.map((item) => <a href={withBase(item.href)}>{item.label}</a>)}
+    </nav>
+  </div>
+</header>

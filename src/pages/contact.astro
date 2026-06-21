@@ -1,0 +1,29 @@
+---
+import { CONTACT_FORM_URL } from '../consts';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="お問い合わせ" description="AIアフィリエイト導線、GitHub Pagesサイト、GAS効率化、LINE導線設計などの相談窓口です。">
+  <section class="page-hero">
+    <p class="eyebrow">Contact</p>
+    <h1>お問い合わせ・相談フォーム</h1>
+    <p>
+      AIアフィリエイト導線、GitHub Pagesサイト、GAS効率化、LINE導線設計などの相談や問い合わせをGoogleフォームで受け付けています。
+    </p>
+  </section>
+
+  <section class="section narrow">
+    {
+      CONTACT_FORM_URL ? (
+        <a class="button primary" href={CONTACT_FORM_URL} target="_blank" rel="noopener noreferrer">
+          Googleフォームを開く
+        </a>
+      ) : (
+        <div class="notice-panel">
+          <h2>お問い合わせ窓口は近日公開予定です</h2>
+          <p>公開前は記事、テンプレート、相談メニューの内容を整えています。GoogleフォームのURLを設定すると、このページから送信できるようになります。</p>
+        </div>
+      )
+    }
+  </section>
+</BaseLayout>

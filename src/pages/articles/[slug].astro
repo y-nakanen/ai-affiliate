@@ -1,0 +1,45 @@
+---
+import { getCollection, render } from 'astro:content';
+import ArticleCard from '../../components/ArticleCard.astro';
+import CTABox from '../../components/CTABox.astro';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articleSlug } from '../../utils/articles';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map((article) => ({
+    params: { slug: articleSlug(article) },
+    props: { article }
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+const allArticles = await getCollection('articles');
+const related = allArticles.filter((item) => article.data.relatedSlugs.includes(articleSlug(item)));
+---
+
+<ArticleLayout article={article}>
+  <Content />
+
+  {
+    related.length > 0 && (
+      <section class="related-section">
+        <div class="section-heading">
+          <p class="eyebrow">Next</p>
+          <h2>次に読む記事</h2>
+        </div>
+        <div class="card-grid">
+          {related.map((item) => <ArticleCard article={item} />)}
+        </div>
+      </section>
+    )
+  }
+
+  <CTABox
+    title="案件選定シートを使って、紹介候補を整理する"
+    text="記事を読んだあとは、紹介したい商品、ASP、広告表記、記事テーマを無料テンプレートで一度見える化しておくと次の作業に進みやすくなります。"
+    href="/templates/"
+    label="無料テンプレを見る"
+  />
+</ArticleLayout>

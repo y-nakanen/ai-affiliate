@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import categories from '../../data/categories.json';
+import { getProductsByCategory } from '../../utils/products';
+
+export function getStaticPaths() {
+  return categories.map((category) => ({
+    params: { slug: category.id },
+    props: { category }
+  }));
+}
+
+const { category } = Astro.props;
+const articles = (await getCollection('articles')).filter((article) => article.data.categoryId === category.id);
+const products = getProductsByCategory(category.id);
+---
+
+<BaseLayout title={category.name} description={category.description}>
+  <section class="page-hero">
+    <p class="eyebrow">Category</p>
+    <h1>{category.name}</h1>
+    <p>{category.description}</p>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">Articles</p>
+      <h2>関連する記事</h2>
+    </div>
+    <div class="card-grid">
+      {articles.length ? articles.map((article) => <ArticleCard article={article} />) : <p>このカテゴリの記事は準備中です。</p>}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">Products</p>
+      <h2>紹介候補の商品・サービス</h2>
+    </div>
+    {products.length > 0 && <AffiliateDisclosure compact type="product" />}
+    <div class="card-grid">
+      {products.length ? products.map((product) => <ProductCard product={product} />) : <p>紹介候補は準備中です。</p>}
+    </div>
+  </section>
+</BaseLayout>

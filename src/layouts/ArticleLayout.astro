@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  article: CollectionEntry<'articles'>;
+}
+
+const { article } = Astro.props;
+const published = article.data.pubDate.toLocaleDateString('ja-JP');
+---
+
+<BaseLayout title={article.data.title} description={article.data.description} ogType="article">
+  <article class="article-shell">
+    <header class="article-header">
+      <p class="eyebrow">Article</p>
+      <h1>{article.data.title}</h1>
+      <p class="article-lead">{article.data.description}</p>
+      <div class="article-meta">
+        <time datetime={article.data.pubDate.toISOString()}>{published}</time>
+        <span>{article.data.tags.join(' / ')}</span>
+      </div>
+    </header>
+    {article.data.affiliateDisclosure && <AffiliateDisclosure type="article" />}
+    <div class="article-content">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

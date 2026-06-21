@@ -1,0 +1,26 @@
+---
+import { withBase } from '../utils/paths';
+
+interface Props {
+  title?: string;
+  text?: string;
+  href?: string;
+  label?: string;
+}
+
+const {
+  title = 'AI副業の進め方を整理する',
+  text = 'AI副業、記事、SNS、テンプレ、相談導線をどうつなげるかを、初心者向けに整理しています。',
+  href = '/start/',
+  label = 'はじめて学ぶ'
+} = Astro.props;
+---
+
+<section class="cta-box">
+  <div>
+    <p class="eyebrow">Next Step</p>
+    <h2>{title}</h2>
+    <p>{text}</p>
+  </div>
+  <a class="button primary" href={withBase(href)}>{label}</a>
+</section>

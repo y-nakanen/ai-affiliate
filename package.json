@@ -1,0 +1,19 @@
+{
+  "name": "ai-sidejob-campus",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "generate:article": "node scripts/generate-article-template.mjs",
+    "generate:social": "node scripts/generate-social-posts.mjs",
+    "generate:video": "node scripts/generate-video-scripts.mjs",
+    "repurpose:content": "node scripts/content-repurpose.mjs",
+    "validate:affiliate": "node scripts/validate-affiliate-links.mjs"
+  },
+  "dependencies": {
+    "astro": "^6.4.8"
+  }
+}

@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import categories from '../data/categories.json';
+import { articleSlug } from '../utils/articles';
+import { withBase } from '../utils/paths';
+
+interface Props {
+  article: CollectionEntry<'articles'>;
+}
+
+const { article } = Astro.props;
+const category = categories.find((item) => item.id === article.data.categoryId);
+const slug = articleSlug(article);
+---
+
+<article class="content-card article-card">
+  <div class="article-card-head">
+    <p class="card-kicker">{category?.name ?? '記事'}</p>
+    <time datetime={article.data.pubDate.toISOString()}>
+      {article.data.pubDate.toLocaleDateString('ja-JP')}
+    </time>
+  </div>
+  <h3><a href={withBase(`/articles/${slug}/`)}>{article.data.title}</a></h3>
+  <p>{article.data.description}</p>
+  <div class="chip-list" aria-label="記事タグ">
+    {article.data.tags.slice(0, 3).map((tag) => <span>{tag}</span>)}
+  </div>
+  <a class="card-read-link" href={withBase(`/articles/${slug}/`)}>この記事で学ぶ</a>
+</article>

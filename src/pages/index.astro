@@ -1,0 +1,106 @@
+---
+import { getCollection } from 'astro:content';
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import CategoryCard from '../components/CategoryCard.astro';
+import Hero from '../components/Hero.astro';
+import LeadMagnetBox from '../components/LeadMagnetBox.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import categories from '../data/categories.json';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { withBase } from '../utils/paths';
+
+const articles = (await getCollection('articles'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const learningSteps = [
+  {
+    title: 'はじめて学ぶ',
+    text: 'AI副業の全体像、最初に読む記事、無料テンプレの使い方をまとめています。',
+    href: '/start/',
+    label: '入口を見る'
+  },
+  {
+    title: '無料テンプレを使う',
+    text: 'AIアフィリエイト案件選定シートで、紹介候補と記事テーマを整理できます。',
+    href: '/templates/',
+    label: 'テンプレを見る'
+  },
+  {
+    title: '記事で学ぶ',
+    text: 'AI活用、SNS導線、サイト運用、自動化をテーマごとに読み進められます。',
+    href: '/articles/',
+    label: '記事一覧へ'
+  },
+  {
+    title: '相談する',
+    text: 'サイト構築や導線設計で詰まったら、Googleフォームから相談できます。',
+    href: '/contact/',
+    label: '問い合わせる'
+  }
+];
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <Hero />
+
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">Start Path</p>
+      <h2>迷ったら、この順番で進める</h2>
+      <p>
+        AI副業は、記事を増やすだけではなく、学ぶ、整理する、発信する、改善する流れを作ることが大切です。まずは無料テンプレと記事から小さく始めます。
+      </p>
+    </div>
+    <div class="path-grid">
+      {
+        learningSteps.map((step, index) => (
+          <article class="path-card">
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+            <a class="card-read-link" href={withBase(step.href)}>{step.label}</a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading split">
+      <div>
+        <p class="eyebrow">Campus Topics</p>
+        <h2>テーマから学ぶ</h2>
+      </div>
+      <a class="text-link" href={withBase('/categories/')}>カテゴリ一覧へ</a>
+    </div>
+    <div class="card-grid">
+      {categories.slice(0, 6).map((category) => <CategoryCard category={category} />)}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading split">
+      <div>
+        <p class="eyebrow">Articles</p>
+        <h2>最新の学習記事</h2>
+      </div>
+      <a class="text-link" href={withBase('/articles/')}>記事一覧へ</a>
+    </div>
+    <div class="card-grid">
+      {articles.map((article) => <ArticleCard article={article} />)}
+    </div>
+  </section>
+
+  <LeadMagnetBox />
+  <SocialLinks />
+
+  <section class="section narrow">
+    <AffiliateDisclosure compact />
+    <p class="policy-note">
+      詳しくは<a href={withBase('/ad-policy/')}>広告ポリシー</a>をご確認ください。
+    </p>
+  </section>
+</BaseLayout>

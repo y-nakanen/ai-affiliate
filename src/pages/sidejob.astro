@@ -1,0 +1,50 @@
+---
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import ProductCard from '../components/ProductCard.astro';
+import CTABox from '../components/CTABox.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getProductsByGroup } from '../utils/products';
+
+const products = getProductsByGroup('sidejob');
+---
+
+<BaseLayout title="エンジニア副業・転職・案件獲得" description="エンジニアスキルを副業、転職、案件獲得につなげるための導線、学習候補、エージェント比較の観点をまとめています。">
+  <section class="page-hero">
+    <p class="eyebrow">Side Job</p>
+    <h1>エンジニア副業・転職・案件獲得</h1>
+    <p>
+      若手エンジニアがスキルを収入の選択肢に変えるために、学習、実績、発信、相談導線を順番に整えます。
+    </p>
+  </section>
+
+  <section class="section narrow">
+    <AffiliateDisclosure compact type="product" />
+  </section>
+
+  <section class="section two-column">
+    <div>
+      <p class="eyebrow">Route</p>
+      <h2>将来の紹介方針</h2>
+      <p>
+        転職サイト、スクール、副業エージェントを紹介する場合も、対象者、向いている条件、注意点を整理してから掲載します。無理な登録誘導ではなく、判断材料を増やすことを優先します。
+      </p>
+    </div>
+    <div class="list-panel">
+      <h3>扱う予定のテーマ</h3>
+      <ul>
+        <li>副業案件の探し方</li>
+        <li>ポートフォリオとGitHub Pages</li>
+        <li>GASや小規模自動化の案件化</li>
+        <li>転職サービスの比較観点</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card-grid">
+      {products.map((product) => <ProductCard product={product} />)}
+    </div>
+  </section>
+
+  <CTABox href="/services/" label="相談メニューを見る" title="自分のスキルの活かし方を相談したい方へ" />
+</BaseLayout>

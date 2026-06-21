@@ -1,0 +1,41 @@
+---
+import CTABox from '../components/CTABox.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="プロフィール" description="AI副業キャンパスの運営方針と提供価値をまとめています。">
+  <section class="page-hero">
+    <p class="eyebrow">Profile</p>
+    <h1>AI副業を、学びながら実践できる形に整理する。</h1>
+    <p>
+      運営者は、過去にアフィリエイトで成果を出した経験があります。現在は、AI、Codex、GAS、SNS、テンプレートを使い、会社員や若手エンジニアでも続けやすい副業導線づくりを研究・実践しています。
+    </p>
+  </section>
+
+  <section class="section two-column">
+    <div>
+      <p class="eyebrow">Value</p>
+      <h2>読者に提供したい価値</h2>
+      <p>
+        稼げる方法を断定するのではなく、記事、SNS、テンプレ、商品紹介、相談導線をどう組み合わせるかを具体化します。使っていない商品を使ったように見せず、調査中・比較予定のものはその状態を明記します。
+      </p>
+    </div>
+    <div class="list-panel">
+      <h3>発信テーマ</h3>
+      <ul>
+        <li>AI副業とアフィリエイト導線</li>
+        <li>GitHub Pagesで作る小さな静的サイト</li>
+        <li>GASやスプレッドシートによる運用管理</li>
+        <li>SNS、LINE、テンプレ配布の設計</li>
+        <li>エンジニアスキルを相談・案件に広げる方法</li>
+      </ul>
+    </div>
+  </section>
+
+  <CTABox
+    title="相談・案件受注の入口も整備中です"
+    text="AI副業導線、GitHub Pagesサイト、GAS効率化、テンプレ活用などの相談メニューを仮掲載しています。"
+    href="/services/"
+    label="相談メニューを見る"
+  />
+</BaseLayout>

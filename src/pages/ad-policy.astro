@@ -1,0 +1,53 @@
+---
+import affiliatePrograms from '../data/affiliatePrograms.json';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="広告・アフィリエイトポリシー" description="当サイトの広告表記、アフィリエイトリンク、誇大表現を避ける方針についてまとめています。">
+  <section class="page-hero">
+    <p class="eyebrow">Ad Policy</p>
+    <h1>広告・PRを含む場合は、読者に分かるように表記します。</h1>
+    <p>
+      当サイトには、広告・アフィリエイトリンクを含む場合があります。最終判断は公式サイトの情報を確認していただく方針です。
+    </p>
+  </section>
+
+  <section class="section prose-section">
+    <h2>基本方針</h2>
+    <ul>
+      <li>広告・アフィリエイトリンクを含む可能性があるページでは、その旨を表示します。</li>
+      <li>「必ず稼げる」「誰でも稼げる」などの断定表現は使いません。</li>
+      <li>使っていない商品・サービスを、利用済みのように見せる表現は避けます。</li>
+      <li>価格、条件、キャンペーン、サービス内容は変更される可能性があるため、公式サイトの確認をお願いしています。</li>
+    </ul>
+
+    <h2>利用予定のASP・広告プログラム</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>名称</th>
+            <th>状態</th>
+            <th>表記方針</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            affiliatePrograms.map((program) => (
+              <tr>
+                <td>{program.name}</td>
+                <td>{program.status}</td>
+                <td>{program.requiredDisclosure}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Amazonアソシエイトについて</h2>
+    <p>
+      Amazonのアソシエイトとして、AI副業キャンパスは適格販売により収入を得ています。正式な参加後は、最新の運営規約と表記ルールを確認しながら運用します。
+    </p>
+  </section>
+</BaseLayout>

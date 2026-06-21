@@ -1,0 +1,26 @@
+---
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import ProductCard from '../components/ProductCard.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getProductsByGroup } from '../utils/products';
+
+const products = getProductsByGroup('tools');
+---
+
+<BaseLayout title="AIツール・副業ツール紹介" description="AI副業、アフィリエイト運用、Codex・GAS自動化、LINE導線づくりに使うツールやサービス候補を整理しています。">
+  <section class="page-hero">
+    <p class="eyebrow">Tools</p>
+    <h1>AIツール・副業ツール</h1>
+    <p>記事作成、サイト公開、自動化、LINE導線など、仕組み化に関係するツールを整理します。</p>
+  </section>
+
+  <section class="section narrow">
+    <AffiliateDisclosure compact type="product" />
+  </section>
+
+  <section class="section">
+    <div class="card-grid">
+      {products.map((product) => <ProductCard product={product} />)}
+    </div>
+  </section>
+</BaseLayout>

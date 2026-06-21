@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleCard from '../components/ArticleCard.astro';
+import CategoryCard from '../components/CategoryCard.astro';
+import LeadMagnetBox from '../components/LeadMagnetBox.astro';
+import LineCTA from '../components/LineCTA.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import categories from '../data/categories.json';
+import { articleSlug } from '../utils/articles';
+
+const firstArticleSlugs = ['ai-affiliate-start', 'codex-github-pages', 'skillup-sidejob'];
+const articles = (await getCollection('articles'))
+  .filter((article) => firstArticleSlugs.includes(articleSlug(article)))
+  .sort((a, b) => firstArticleSlugs.indexOf(articleSlug(a)) - firstArticleSlugs.indexOf(articleSlug(b)));
+---
+
+<BaseLayout title="はじめての方へ" description="SNSプロフィールから来た方向けに、AI副業キャンパスの読み方、最初の3記事、無料テンプレをまとめています。">
+  <section class="page-hero">
+    <p class="eyebrow">Start Here</p>
+    <h1>AI副業やアフィリエイトを、無理なく続ける仕組みから考える。</h1>
+    <p>
+      このサイトは、過去にアフィリエイトで成果を出した経験をもとに、ChatGPT、Codex、GitHub Pages、GAS、SNS、テンプレートを使ったAI副業の導線づくりを整理する場所です。
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">Guide</p>
+      <h2>迷ったらこの順で読んでください</h2>
+      <p>まず導線の全体像をつかみ、次にサイト公開の土台を作り、最後に学ぶべきスキルを整理します。</p>
+    </div>
+    <div class="step-list">
+      <article>
+        <span>1</span>
+        <h3>AI時代の始め方を知る</h3>
+        <p>商品リンクより先に、誰に何を届けるかを決めます。</p>
+      </article>
+      <article>
+        <span>2</span>
+        <h3>母艦サイトを作る</h3>
+        <p>GitHub PagesとAstroで、記事と商品データを管理します。</p>
+      </article>
+      <article>
+        <span>3</span>
+        <h3>学習テーマを絞る</h3>
+        <p>AI、文章化、SNS、改善、信頼の土台を作ります。</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">Recommended</p>
+      <h2>まず読むべき3記事</h2>
+    </div>
+    <div class="card-grid">
+      {articles.map((article) => <ArticleCard article={article} />)}
+    </div>
+  </section>
+
+  <LeadMagnetBox />
+  <LineCTA />
+
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">Map</p>
+      <h2>関心に近いカテゴリから読む</h2>
+    </div>
+    <div class="card-grid">
+      {categories.map((category) => <CategoryCard category={category} />)}
+    </div>
+  </section>
+
+  <SocialLinks />
+</BaseLayout>

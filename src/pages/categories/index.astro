@@ -1,0 +1,19 @@
+---
+import CategoryCard from '../../components/CategoryCard.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import categories from '../../data/categories.json';
+---
+
+<BaseLayout title="カテゴリ一覧" description="AI副業、スキルアップ、エンジニア副業、作業環境、Codex・GAS自動化などのカテゴリ一覧です。">
+  <section class="page-hero">
+    <p class="eyebrow">Categories</p>
+    <h1>カテゴリ一覧</h1>
+    <p>関心に近いテーマから、記事や紹介候補の商品・サービスを探せます。</p>
+  </section>
+
+  <section class="section">
+    <div class="card-grid">
+      {categories.map((category) => <CategoryCard category={category} />)}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "amazon-associates",
+    "name": "Amazonアソシエイト",
+    "status": "利用予定",
+    "homepage": "https://affiliate.amazon.co.jp/",
+    "disclosureLabel": "Amazonアソシエイト参加予定",
+    "requiredDisclosure": "Amazonのアソシエイトとして、AI副業キャンパスは適格販売により収入を得ています。",
+    "notes": "審査通過後に正式な表記とリンクを確認する。"
+  },
+  {
+    "id": "rakuten-affiliate",
+    "name": "楽天アフィリエイト",
+    "status": "利用予定",
+    "homepage": "https://affiliate.rakuten.co.jp/",
+    "disclosureLabel": "楽天アフィリエイト利用予定",
+    "requiredDisclosure": "当サイトは楽天アフィリエイトを利用する場合があります。",
+    "notes": "商品リンク掲載時は広告であることが分かる位置に表記する。"
+  },
+  {
+    "id": "moshimo",
+    "name": "もしもアフィリエイト",
+    "status": "利用予定",
+    "homepage": "https://af.moshimo.com/",
+    "disclosureLabel": "もしもアフィリエイト利用予定",
+    "requiredDisclosure": "当サイトはもしもアフィリエイトを利用する場合があります。",
+    "notes": "Amazon、楽天、Yahoo!の商品導線を使う可能性がある。"
+  },
+  {
+    "id": "a8",
+    "name": "A8.net",
+    "status": "利用予定",
+    "homepage": "https://www.a8.net/",
+    "disclosureLabel": "A8.net広告候補",
+    "requiredDisclosure": "当サイトはA8.netの広告リンクを掲載する場合があります。",
+    "notes": "サービス紹介記事や比較記事で利用予定。"
+  },
+  {
+    "id": "valuecommerce",
+    "name": "バリューコマース",
+    "status": "検討中",
+    "homepage": "https://www.valuecommerce.ne.jp/",
+    "disclosureLabel": "バリューコマース検討中",
+    "requiredDisclosure": "当サイトはバリューコマースの広告リンクを掲載する場合があります。",
+    "notes": "案件の相性を見て導入する。"
+  }
+]

@@ -1,0 +1,21 @@
+---
+import socialLinks from '../data/socialLinks.json';
+---
+
+<section class="social-box" aria-labelledby="social-heading">
+  <div>
+    <p class="eyebrow">Social</p>
+    <h2 id="social-heading">SNSでも発信予定です</h2>
+  </div>
+  <div class="social-list">
+    {
+      socialLinks.map((item) =>
+        item.url ? (
+          <a href={item.url} target="_blank" rel="noopener noreferrer">{item.label}</a>
+        ) : (
+          <span>{item.label} / 順次公開予定</span>
+        )
+      )
+    }
+  </div>
+</section>

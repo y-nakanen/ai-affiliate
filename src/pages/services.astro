@@ -1,0 +1,71 @@
+---
+import { CONTACT_FORM_URL } from '../consts';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import services from '../data/services.json';
+import { withBase } from '../utils/paths';
+
+const sortedServices = [...services].sort((a, b) => a.priority - b.priority);
+---
+
+<BaseLayout title="AI導線・GAS・GitHub Pagesの相談メニュー" description="AIアフィリエイト導線設計、GitHub Pagesサイト構築、GAS業務効率化、LINE導線設計、Codex活用相談の近日公開予定メニューです。">
+  <section class="page-hero">
+    <p class="eyebrow">Services</p>
+    <h1>案件受注・相談メニュー</h1>
+    <p>
+      小規模事業者や個人向けに、AIと自動化を使った導線づくりを支援するメニューを準備しています。
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="service-grid">
+      {
+        sortedServices.map((service) => (
+          <article class="content-card service-card">
+            <div class="product-card-head">
+              <p class="card-kicker">相談メニュー</p>
+              <span class="status-pill">{service.status}</span>
+            </div>
+            <h3>{service.name}</h3>
+            <dl class="product-details">
+              <div>
+                <dt>対象</dt>
+                <dd>{service.target}</dd>
+              </div>
+              <div>
+                <dt>相談できること</dt>
+                <dd>{service.scope}</dd>
+              </div>
+              <div>
+                <dt>支援イメージ</dt>
+                <dd>{service.deliverable}</dd>
+              </div>
+            </dl>
+            {
+              CONTACT_FORM_URL ? (
+                <a class="card-read-link" href={CONTACT_FORM_URL} target="_blank" rel="noopener noreferrer">相談フォームへ</a>
+              ) : (
+                <span class="availability-note">近日公開予定</span>
+              )
+            }
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section narrow">
+    <div class="notice-panel">
+      <h2>相談メニューは順次整備中です</h2>
+      <p>
+        先に相談したい内容がある場合は、Googleフォームから概要を送れます。内容を見ながら、正式メニューの優先順位も整えていきます。
+      </p>
+      {
+        CONTACT_FORM_URL ? (
+          <a class="button primary" href={CONTACT_FORM_URL} target="_blank" rel="noopener noreferrer">相談フォームへ</a>
+        ) : (
+          <a class="button secondary" href={withBase('/contact/')}>お問い合わせページへ</a>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>

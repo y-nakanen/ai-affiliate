@@ -1,0 +1,32 @@
+[
+  {
+    "id": "x",
+    "label": "X",
+    "url": "",
+    "status": "順次公開予定"
+  },
+  {
+    "id": "tiktok",
+    "label": "TikTok",
+    "url": "",
+    "status": "順次公開予定"
+  },
+  {
+    "id": "youtube",
+    "label": "YouTube",
+    "url": "",
+    "status": "順次公開予定"
+  },
+  {
+    "id": "note",
+    "label": "note",
+    "url": "",
+    "status": "順次公開予定"
+  },
+  {
+    "id": "github",
+    "label": "GitHub",
+    "url": "",
+    "status": "順次公開予定"
+  }
+]
